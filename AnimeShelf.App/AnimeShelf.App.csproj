@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><OutputType>WinExe</OutputType><Version>0.11.1</Version><TargetFramework>net8.0-windows</TargetFramework><ApplicationIcon>Assets\anime-shelf.ico</ApplicationIcon><UseWPF>true</UseWPF><UseWindowsForms>true</UseWindowsForms><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+ <ItemGroup><Resource Include="Assets\anime-shelf.ico" /><Resource Include="Assets\anime-shelf-icon.png" /><Resource Include="Assets\cat-shelf-open.png" /></ItemGroup><ItemGroup><ProjectReference Include="..\AnimeShelf.Core\AnimeShelf.Core.csproj" /></ItemGroup>
+</Project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

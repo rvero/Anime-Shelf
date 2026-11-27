@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <SolidColorBrush x:Key="BackgroundBrush" Color="#FF0C0B14"/><SolidColorBrush x:Key="SurfaceBrush" Color="#FF191923"/><SolidColorBrush x:Key="TextBrush" Color="#FFDCD6CF"/><SolidColorBrush x:Key="MutedBrush" Color="#FFAFA79F"/><SolidColorBrush x:Key="BorderBrush" Color="#FF45404A"/><SolidColorBrush x:Key="AccentBrush" Color="#FF493020"/><SolidColorBrush x:Key="ActionBrush" Color="#FFFF9633"/>
+ <SolidColorBrush x:Key="OverlayBrush" Color="#B8000000"/>
+ <Style x:Key="DarkButton" TargetType="{x:Type Button}">
+  <Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/><Setter Property="Padding" Value="10,7"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="{x:Type Button}"><Border x:Name="Bg" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="6" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" RecognizesAccessKey="True"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Bg" Property="Background" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+ </Style>
+ 
+ <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DarkButton}"/>
+ 
+ <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}" BasedOn="{StaticResource DarkButton}"/>
+ 
+ <Style TargetType="{x:Type CheckBox}"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="{x:Type CheckBox}"><StackPanel Orientation="Horizontal"><Border x:Name="Box" Width="17" Height="17" CornerRadius="4" Background="{DynamicResource BackgroundBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Margin="0,0,8,0"><TextBlock x:Name="Tick" Text="✓" Foreground="{DynamicResource ActionBrush}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/></Border><ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="True"/></StackPanel><ControlTemplate.Triggers><Trigger Property="IsChecked" Value="True"><Setter TargetName="Tick" Property="Visibility" Value="Visible"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+ 
+ <Style TargetType="{x:Type ComboBox}">
+  <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+  <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="{x:Type ComboBox}"><Grid><ToggleButton x:Name="Toggle" IsChecked="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Focusable="False"><ToggleButton.Template><ControlTemplate TargetType="{x:Type ToggleButton}"><Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="5"><Grid><ContentPresenter Margin="9,5,25,5" Content="{Binding SelectionBoxItem,RelativeSource={RelativeSource AncestorType=ComboBox}}" TextElement.Foreground="{DynamicResource TextBrush}"/><TextBlock Text="⌄" Foreground="{DynamicResource MutedBrush}" HorizontalAlignment="Right" Margin="0,0,8,0" VerticalAlignment="Center"/></Grid></Border></ControlTemplate></ToggleButton.Template></ToggleButton><Popup IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" AllowsTransparency="True" Focusable="False"><Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" MinWidth="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent}}"><ScrollViewer MaxHeight="260"><ItemsPresenter/></ScrollViewer></Border></Popup></Grid></ControlTemplate></Setter.Value></Setter>
+ </Style>
+ 
+ <Style TargetType="{x:Type ComboBoxItem}"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/></Style>
+ 
+ <Style TargetType="{x:Type ContextMenu}"><Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/></Style>
+ 
+ <Style TargetType="{x:Type MenuItem}"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/><Setter Property="Padding" Value="12,7"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="{x:Type MenuItem}"><Grid><Border x:Name="ItemBackground" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"><ContentPresenter ContentSource="Header" RecognizesAccessKey="True"/></Border><Popup x:Name="PART_Popup" Placement="Bottom" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False"><Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="5" Padding="3"><StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/></Border></Popup></Grid><ControlTemplate.Triggers><Trigger Property="IsHighlighted" Value="True"><Setter TargetName="ItemBackground" Property="Background" Value="{DynamicResource AccentBrush}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value="0.5"/></Trigger><Trigger Property="Role" Value="SubmenuHeader"><Setter TargetName="PART_Popup" Property="Placement" Value="Right"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+ 
+ <Style TargetType="{x:Type ListBox}"><Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/></Style> <Style TargetType="{x:Type TextBox}"><Setter Property="Background" Value="{DynamicResource SurfaceBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="CaretBrush" Value="{DynamicResource ActionBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/></Style>
+ 
+ <Style TargetType="{x:Type Menu}"><Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/></Style>
+ 
+ <Style TargetType="{x:Type ToolBar}"><Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/></Style>
+ 
+ <Style TargetType="{x:Type StatusBar}"><Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/></Style>
+ 
+ <Style TargetType="{x:Type ProgressBar}"><Setter Property="Foreground" Value="{DynamicResource ActionBrush}"/></Style>
+ <Style TargetType="{x:Type ScrollBar}">
+  <Setter Property="Width" Value="10"/><Setter Property="Background" Value="{DynamicResource BackgroundBrush}"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="{x:Type ScrollBar}"><Border Background="{TemplateBinding Background}" CornerRadius="5"><Track x:Name="PART_Track" IsDirectionReversed="True"><Track.DecreaseRepeatButton><RepeatButton Command="ScrollBar.PageUpCommand" Opacity="0"/></Track.DecreaseRepeatButton><Track.Thumb><Thumb><Thumb.Template><ControlTemplate TargetType="{x:Type Thumb}"><Border Background="{DynamicResource BorderBrush}" CornerRadius="5" Margin="2"/></ControlTemplate></Thumb.Template></Thumb></Track.Thumb><Track.IncreaseRepeatButton><RepeatButton Command="ScrollBar.PageDownCommand" Opacity="0"/></Track.IncreaseRepeatButton></Track></Border></ControlTemplate></Setter.Value></Setter>
+ </Style></ResourceDictionary>
+
+
+
+
+
+

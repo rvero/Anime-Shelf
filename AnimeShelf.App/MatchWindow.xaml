@@ -1,0 +1,4 @@
+<Window x:Class="AnimeShelf.MatchWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="{DynamicResource L_CorrectTitle}" Width="640" Height="470" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+ <DockPanel Margin="12"><TextBlock DockPanel.Dock="Top" Text="{DynamicResource L_MatchPrompt}" Margin="0,0,0,8"/><StackPanel DockPanel.Dock="Top" Orientation="Horizontal"><TextBox x:Name="QueryBox" Width="365" Margin="0,0,8,8"/><Button Content="{DynamicResource L_Search}" Click="Search_Click" Padding="12,3" Margin="0,0,0,8"/></StackPanel><TextBlock x:Name="Message" DockPanel.Dock="Bottom" Margin="0,8,0,0"/><Button DockPanel.Dock="Bottom" Content="{DynamicResource L_UseSelected}" Click="Select_Click" HorizontalAlignment="Right" Padding="12,5" Margin="0,8,0,0"/><ListBox x:Name="Results" DisplayMemberPath="Display" MouseDoubleClick="Select_Click"/></DockPanel>
+</Window>
+

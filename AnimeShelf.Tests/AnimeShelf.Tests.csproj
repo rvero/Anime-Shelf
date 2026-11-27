@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net8.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><IsPackable>false</IsPackable><IsTestProject>true</IsTestProject></PropertyGroup>
+  <ItemGroup><PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1"/><PackageReference Include="xunit" Version="2.9.2"/><PackageReference Include="xunit.runner.visualstudio" Version="2.8.2"/></ItemGroup>
+  <ItemGroup><ProjectReference Include="..\AnimeShelf.Core\AnimeShelf.Core.csproj"/></ItemGroup>
+  <ItemGroup><None Include="..\AnimeShelf.App\Themes\*.xaml" Link="Themes\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><None Include="..\AnimeShelf.App\Languages\*.xaml" Link="Languages\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+</Project>
+
+
